@@ -4,7 +4,13 @@ import { createClient } from "redis";
 const app = express();
 app.use(express.json());
 
-const client = createClient();
+// Use Docker service name and environment variables
+const client = createClient({
+  socket: {
+    host: process.env.REDIS_HOST || 'redis',
+    port: parseInt(process.env.REDIS_PORT || '6379')
+  }
+});
 
 client.on("connect", () => console.log("Redis connected"));
 client.on("ready", () => console.log("Redis ready"));
