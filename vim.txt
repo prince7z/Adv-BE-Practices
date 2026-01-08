@@ -1,0 +1,50 @@
+vim cluster.yml - to create and open file 
+i : for insert
+esc : to exit 
+:wq - for save and quite
+:!q for dontsave and quite
+
+shft+g to go down most 
+gg to go on top 
+
+/{keyword} to search and press n to go next  [searching from up to down on long list ]
+?{key word} to search from down to up
+
+* - if u are on any keyword so it will search tht word [dont have to copy first and then /keyword]
+# - same but from down to up [dont press n here to go next press # again]
+
+:%s/{keywrod tht going to replace}/{keyword which going to replace}/g [ g means globalyy i mean from whole file ]
+
+u - to undo 
+ctrl+r for redo
+:e! to revert all changes 
+
+o - to start editing from next line [without i ]
+shift+o to edit up
+capital i - to start editing from line starting 
+capital a - to edit from end line 
+x - to delete next char 
+r - to repalce char 
+dd to cut tht line 
+p to paste down to tht line
+capital p to paste up to tht line
+12dd to delete 12 line after tht
+
+v - to come in visual mode then arrow key to select char or line
+capital v - to select whole line 
+
+y -to copy selected thing 
+
+:set nu - will give index to each line 
+:set nonu - to remove num 
+
+:syntex on/off to color theme 
+
+:200 to go 200th line 
+
+vim -o filename1.txt filename2.txt - will open 2 file 
+ctrl ww - to change file 
+
+vim -d  filename1 filename2 - can comapare files 
+
+
