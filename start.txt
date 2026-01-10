@@ -1,0 +1,105 @@
+to start localy first ensure we are running docker engine
+then make a cluster yml  and run "kind create cluster --config cluster.yml
+--name localcluster"
+do docker ps to see running container 
+we can hit endponts /api/v1/namespace/default/pods to see the cluster runnign
+but we will not be able to fetch it cause we are not authorised 
+so now we are finally running kubernates inside docker 
+
+now we can do cubectl get nodes to see if nodes are runninng or not 
+If you want to see the exact HTTP request that goes out to the API server, you
+can add --v=8 flag
+
+now we have to deploy container 
+
+can do kubectl run nginxlocal --image=nginx --port=80
+so kubernate will autometacly select the node in which to run pod
+kubectl get pods to see runing podscan do kubectl lods nginx to see logs in
+which pod the nginx running 
+describe the pod to see more details - kubectl describe pod nginx
+now we are runnign nginx image inside  a pod insde a node
+to stop the pod we can do kubectl delete pod nginx 
+
+manifest is a file tht have configration for whtever u going to run like pod ,
+replicaset,deployment n all 
+to run tht thing we do kubectl apply -f manifest.yml
+
+
+in production we make deployment which create replicaset nd ensure the amonnt
+we have asked for pods are runningn and which machine image is running there
+ se the example of deployment.yml 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+kubectl apply -f deployment.yml
+same to get deployment detail kubectl get deployment 
+to ger rs  k get rs
+ 
+We use deployment. To make. Things smooth. Like if any image fails. So it
+ensure. That the fixed number of replica sets should work. Now think like
+that. You have deployed. 3 port setup. And later you came with an update. So
+you just have to change the deployment yml file. To give version two right.
+Now deployment will itself handle to bring down. Itpods one by one and. Bring
+up the pots one by one. If somehow any pod will fail so it will roll back to
+that pod. Wigan do cubical rollout history deployment. To see all the history
+of virgins. We can undo the deployment by capital rollout, undo deployment and
+the next deployment. To expose the app on Internet we use services
+
+there are 3 services nodepods,cluster ip ,loadbalancer First, the note. Gives
+excess. For the pod. This will. Public you are. Ford URL. So anyone can. Do
+Didos attack? It is the easiest way. To deploy. Second is load balancer. Load
+balancer ensure. That all the. Fords will have the same amount of traffic. It
+ensures that. Node IP. Will no longer be public. Its work as reverse proxy.
+And the third one is that is used between the bots to communicate. Like how
+the parts will be communicating. Depends on cluster IP.The Lord Valencia. Will
+have his. Manifest file. And we apply like you could all apply. Minus
+afserviceLb.yml.
+
+So in conclusion. Make a cluster by kind yml. Using kind create cluster. Then
+make a deployment yml. Add run Qadle deployment. Then expose our app over node
+port. That what we usually don't do. Like we do not vote, but after that we
+use a load balancer. So Northport will expose to load balancer only and the
+rest of thing load balancer will handle. We have to make a. Load balance set
+We use deployment. To make. Things smooth. Like if any image fails. So it
+ensure. That the fixed number of replica sets should work. Now think like
+that. You have deployed. 3 port setup. And later you came with an update. So
+you just have to change the deployment yml file. To give version two right.
+Now deployment will itself handle to bring down. Itpods one by one and. Bring
+up the pots one by one. If somehow any pod will fail so it will roll back to
+that pod. Wigan do cubical rollout history deployment. To see all the history
+of virgins. We can undo the deployment by capital rollout, undo deployment and
+the next deployment. To expose the app on Internet we use services
+
+there are 3 services nodepods,cluster ip ,loadbalancer First, the note. Gives
+excess. For the pod. This will. Public you are. Ford URL. So anyone can. Do
+Didos attack? It is the easiest way. To deploy. Second is load balancer. Load
+balancer ensure. That all the. Fords will have the same amount of traffic. It
+ensures that. Node IP. Will no longer be public. Its work as reverse proxy.
+And the third one is that is used between the bots to communicate. Like how
+the parts will be communicating. Depends on cluster IP.The Lord Valencia. Will
+have his. Manifest file. And we apply like you could all apply. Minus
+afserviceLb.yml.
+
+So in conclusion. Make a cluster by kind yml. Using kind create cluster. Then
+make a deployment yml. Add run Qadle deployment. Then expose our app over node
+port. That what we usually don't do. Like we do not vote, but after that we
+use a load balancer. So Northport will expose to load balancer only and the
+rest of thing load balancer will handle. We have to make a. Load balance set
+YML 2. As we have made for note. Yeah, that's it.
+YML 2. As we have made for note. Yeah, that's it.
