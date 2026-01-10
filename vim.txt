@@ -34,7 +34,6 @@ v - to come in visual mode then arrow key to select char or line
 capital v - to select whole line 
 
 y -to copy selected thing 
-
 :set nu - will give index to each line 
 :set nonu - to remove num 
 
