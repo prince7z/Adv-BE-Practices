@@ -12,8 +12,6 @@ client.on("connect", () => console.log("Redis connected"));
 client.on("ready", () => console.log("Redis ready"));
 client.on("error", (err) => console.error("Redis error:", err));
 client.on("end", () => console.log("Redis connection ended"));
-
-
 async function processJobs(submission: string) {
     const {psid, code, lang} = JSON.parse(submission);
     console.log(`Processing submission for PSID: ${psid}, Language: ${lang}`);
@@ -29,7 +27,6 @@ async function processJobs(submission: string) {
         resolve(true);
     });
 }
-
 async function workerLoop() {
     try{
         console.log("inside worker loop");
@@ -52,7 +49,6 @@ async function workerLoop() {
         console.error("Could not connect to Redis or start worker loop:", error);
     }
 }
-
 async function startworker(){
   try {
     await client.connect();
