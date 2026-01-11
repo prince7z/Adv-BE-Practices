@@ -96,6 +96,8 @@ the parts will be communicating. Depends on cluster IP.The Lord Valencia. Will
 have his. Manifest file. And we apply like you could all apply. Minus
 afserviceLb.yml.
 
+
+
 So in conclusion. Make a cluster by kind yml. Using kind create cluster. Then
 make a deployment yml. Add run Qadle deployment. Then expose our app over node
 port. That what we usually don't do. Like we do not vote, but after that we
